@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{% static 'polls/css/styles.css' %}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+</head>
+<body>
+<h1>Сайт с опросами</h1>
+<nav>
+    <li><a href="{% url 'profile' %}">Профиль</a></li>
+    <li><a href="{% url 'add_survey' %}">Добавить опрос</a></li>
+    <li><a href="{% url 'logout' %}">Выйти</a></li>
+</nav>
+<ul>
+    {% for s in surveys %}
+    <li>
+        <h2>{{ s.title }}</h2>
+        <p>{{ s.content }}</p>
+        <p><a href="{{ s.get_absolute_url }}">Ответить</a></p>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

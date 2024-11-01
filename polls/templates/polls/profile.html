@@ -1,0 +1,22 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Профиль</h1>
+    <nav>
+        <a href="{% url 'index' %}">Опросы</a>
+        <a href="{% url 'logout' %}">Выйти</a>
+    </nav>
+</header>
+<main class="block-profile">
+    <div>
+        <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" width="100">
+        <h2>Логин: {{ user.username }}</h2>
+        <p>Email: {{ user.email }}</p>
+        <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
+        <a href="{% url 'delete_profile' %}">Удалить профиль</a>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{title}}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'polls/css/styles.css' %}">
+    <!-- Добавьте любые другие стили или скрипты здесь -->
+</head>
+<body>
+
+<main>
+    {% block content %}
+    <!-- Содержимое страниц будет вставлено сюда -->
+    {% endblock %}
+</main>
+
+</body>
+</html>

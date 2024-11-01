@@ -1,0 +1,37 @@
+{% block content %}
+<h1>{{ title }}</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.as_p }}
+
+    <h2>Варианты ответов</h2>
+    <div id="choice-forms" class="form-input">
+        <h3>Вариант 1: </h3>
+        <input type="text" name="choice_text" required>
+        <h3>Вариант 2: </h3>
+        <input type="text" name="choice_text" required>
+    </div>
+    <h3>
+        <button type="button" id="add-choice-button">Добавить вариант ответа</button>
+    </h3>
+
+    <p>
+        <button type="submit">Отправить</button>
+    </p>
+</form>
+
+<script>
+    let choiceCount = 3;
+
+    document.getElementById('add-choice-button').addEventListener('click', function() {
+        const choiceFormsDiv = document.getElementById('choice-forms');
+        const newChoice = document.createElement('div');
+
+        newChoice.innerHTML = `<h3>Вариант ${choiceCount}:</h3><input type="text" name="choice_text" required>`;
+
+        choiceFormsDiv.appendChild(newChoice);
+        choiceCount++;
+    });
+</script>
+{% endblock %}

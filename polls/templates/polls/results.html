@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+<nav>
+    <li><a href="{% url 'index' %}">Опросы</a></li>
+</nav>
+<h1>Результаты опроса: {{ survey.title }}</h1>
+
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+<h2>Варианты ответов:</h2>
+<ul>
+    {% for choice in choices %}
+    <li>
+        {{ choice.choice_text }}: {{ choice.votes }} голосов
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
