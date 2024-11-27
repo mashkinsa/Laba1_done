@@ -18,4 +18,7 @@
     </li>
     {% endfor %}
 </ul>
+{% if survey.image %}
+<p><img class="img-article-left" src="{{ survey.image.url }}" alt="{{ survey.title }}"></p>
+{% endif %}
 {% endblock %}

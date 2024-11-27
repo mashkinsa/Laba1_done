@@ -9,6 +9,13 @@
     </nav>
 </header>
 <h1>Авторизация</h1>
+ {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 <form method="post">
     {% csrf_token %}
     {% for f in form %}
